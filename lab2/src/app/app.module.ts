@@ -9,7 +9,7 @@ import { ContentComponent } from './component/main/content/content.component';
 import { ProductComponent } from './component/main/content/product/product.component';
 import { ProductDetailComponent } from './component/main/content/product-detail/product-detail.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import { AddProductComponent } from './component/add-product/add-product.compone
     AddProductComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

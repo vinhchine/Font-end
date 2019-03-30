@@ -30,4 +30,11 @@ export class ProductComponent implements OnInit {
   // showMessage() {
   //   this.thongbaoService.message();
   // }
+  getListProduct() {
+    this.productService.getProducts()
+    .subscribe(data => this.products = data ) ;
+  }
+  showDetail(product) {
+    this.selectedProduct = product;
+    }
 }
