@@ -1,0 +1,21 @@
+
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-12" *ngFor="let product of products" [class.selected] = "product === selectedProduct" >
+  <div class="card" >
+    <img class="card-img-top" src="https://via.placeholder.com/300" alt="image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">{{product.productName}}</h4>
+      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <a href="#" class="btn btn-primary" (click)= "onSelect(product)" >See Profile</a>
+      <button (click) = "onDelete(product)">Delete</button>
+      <button (click) = "showMessage()">Button showMessage</button>
+    </div>
+  </div>
+    </div>
+</div>
+<hr>
+<app-product-detail [infoProduct]='selectedProduct'>
+
+
+</app-product-detail>
+

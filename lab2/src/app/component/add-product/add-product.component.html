@@ -1,0 +1,17 @@
+<h2>Form san pham</h2>
+<form>
+  <div class="form-group">
+    <input type="text"
+        class="form-control"
+        placeholder="Product Name"
+        [(ngModel)]="product.productName"
+        [ngModelOptions]="{standalone:true}"/>
+      <input type="number"
+        class="form-control"
+        placeholder="Price Regular"
+        [(ngModel)]="product.priceRegular"
+        [ngModelOptions]="{standalone: true}" />
+  </div>
+  <button (click) ="addProduct()">Button</button>
+</form>
+<button (click) = "showMessage()">Show</button>
