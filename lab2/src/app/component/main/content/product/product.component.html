@@ -1,21 +1,24 @@
 
 <div class="row">
   <div class="col-md-3 col-sm-6 col-12" *ngFor="let product of products" [class.selected] = "product === selectedProduct" >
-  <div class="card" >
-    <img class="card-img-top" src="https://via.placeholder.com/300" alt="image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">{{product.productName}}</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-      <a href="#" class="btn btn-primary" (click)= "onSelect(product)" >See Profile</a>
-      <button (click) = "onDelete(product)">Delete</button>
-      <button (click) = "showMessage()">Button showMessage</button>
+  <div class="card card-product mb-3" >
+    <img class="card-img-top" src='{{product.imagePath}}' alt="image" >
+    <div class="card-body ">
+      <h5 class="card-title product-title">{{product.productName}}</h5>
+      <div class="cart-text ">
+        <span class="del-price">{{product.priceSale}} </span>
+        <span class="new-price">{{product.newPrice}}</span>
+      </div>
+      <a href="#" class="btn btn-info btn-add-to-cart"><i class="fas fa-shopping-cart"></i></a>
+      <a href="#" class="btn btn-outline-info btn-detail ml-2" (click)= "onSelect(product)" >Xem chi tiết</a>
+      <button class="btn-danger" (click) = "onDelete(product)">Xóa sản phẩm</button>
+      <h3 class="sale-sticky"> Sale</h3>
     </div>
   </div>
     </div>
 </div>
 <hr>
 <app-product-detail [infoProduct]='selectedProduct'>
-
 
 </app-product-detail>
 

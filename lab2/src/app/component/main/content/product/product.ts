@@ -3,4 +3,6 @@ export class Product {
     productName: string;
     priceSale: string;
     status: boolean;
+    imagePath: string;
+    newPrice: string;
 }

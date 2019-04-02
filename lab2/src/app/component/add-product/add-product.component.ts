@@ -13,7 +13,7 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
   }
-  addProduct(){
+  addProduct() {
     this.productService.addProduct(this.product);
   }
 }

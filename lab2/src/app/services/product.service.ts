@@ -17,7 +17,7 @@ export class ProductService {
   }
   addProduct(product) {
     // tslint:disable-next-line:semicolon
-    const newProduct = {id: this.data.length + 1, ...product }
+    const newProduct = {productID: this.data.length + 1, ...product }
     this.data.push(newProduct) ;
     console.log(this.data);
   }
