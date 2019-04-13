@@ -2,19 +2,22 @@
 <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container">
-               <a class="navbar-brand" href="#"><i class="fab fa-grav fa-spin"></i></a>
+               <a class="navbar-brand" href="#"><i class="fab fa-apple fa-2x"></i></a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
                </button>
           
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                  <ul class="navbar-nav mr-auto">
-                   <li class="nav-item active">
-                     <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                   <li routerLinkActive="nav-item ">
+                     <a class="nav-link" href="#" routerLink='/home'>Trang chủ <span class="sr-only">(current)</span></a>
                    </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="#">Sản phẩm</a>
+                   <li routerLinkActive="nav-item">
+                     <a class="nav-link" href="#" routerLink='/product'>Sản phẩm</a>
                    </li>
+                   <li routerLinkActive="nav-item">
+                    <a class="nav-link" href="#" routerLink='/add-product'>Thêm Sản phẩm</a>
+                  </li>
                    <li class="nav-item dropdown">
                      <a class="nav-link" href="#" id="navbarDropdown" >
                        Liên hệ
@@ -26,6 +29,20 @@
                        <a class="dropdown-item" href="#">Gửi phiếu hỗ trợ</a>
                      </div>
                    </li>
+                   <div class="btn-group">
+                    <button type="button" class="btn btn-danger" routerLink='/category'>Category</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <app-category></app-category>
+                      <!-- <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a> -->
+                    </div>
+                  </div>
                  </ul>
                  <form class="form-inline my-2 my-lg-0">
                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

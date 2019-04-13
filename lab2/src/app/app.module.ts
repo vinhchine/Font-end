@@ -12,6 +12,12 @@ import { AddProductComponent } from './component/add-product/add-product.compone
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+// import { CartComponent } from './component/cart/cart.component';
+import { EntitiesComponent } from './component/entities/entities.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { HomeComponent } from './component/home/home.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CategoryComponent } from './category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +28,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductComponent,
     ProductDetailComponent,
     AddProductComponent,
-    DashboardComponent
+    DashboardComponent,
+    // CartComponent,
+    EntitiesComponent,
+    NotfoundComponent,
+    HomeComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

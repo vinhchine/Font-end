@@ -1,20 +1,29 @@
-<h2>Thêm Sản Phẩm</h2>
+<!-- 
 <div class="form-group">
   <div class="form-row">
      <div class="col">
-        <label>Tên sản phẩm</label>
-        <input type="text" class="form-control" placeholder="Tên sản phẩm" [(ngModel)]="product.productName"
-        [ngModelOptions]="{standalone:true}" required name="">
+        <label>Tên sản phẩm:</label>
+        <input type="text"
+        class="form-control"
+        placeholder="Tên sản phẩm"
+        [(ngModel)]="product.productName"
+        [ngModelOptions]="{standalone:true}"
+        />
      </div>
      <div class="col">
-        <label>Giá sản phẩm</label>
-        <input type="text" class="form-control" placeholder="Giá sản phẩm" [(ngModel)]="product.priceSale"
-        [ngModelOptions]= "{standalone: true}"  required name="">
+        <label>Hình ảnh:</label>
+        <input type="string" 
+        class="form-control" 
+        placeholder="Nhập link hình ảnh..." 
+        [(ngModel)]="product.imagePath"
+        [ngModelOptions]= "{standalone: true}" 
+        />
      </div>
   </div>
 </div>
 <div class="form-group">
-  <label>Trạng thái</label>
+  
+  <label>Trạng thái:</label>
   <select class="form-control" [(ngModel)]="product.status"
   [ngModelOptions]= "{standalone: true}" >
      <option value="" selected>---</option>
@@ -23,15 +32,28 @@
      <option value="coming">Sắp có</option>
   </select>
 </div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroupFileAddon01">Hình ảnh</span>
-  </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-  </div>
+<div class="form-row">
+  <div class="col">
+    <label>Giá sản phẩm:</label>
+    <input type="string" 
+    class="form-control" 
+    placeholder="Giá sản phẩm" 
+    [(ngModel)]="product.priceSale"
+    [ngModelOptions]= "{standalone: true}" 
+    />
+
 </div>
+<div class="col">
+  <label>Giá sale:</label>
+  <input type="string" 
+  class="form-control" 
+  placeholder="Giá sản phẩm" 
+  [(ngModel)]="product.newPrice"
+  [ngModelOptions]= "{standalone: true}" 
+  />
+</div>
+</div>
+<button class="btn-primary" submit="submit">Add</button> -->
 <!-- <form>
   <div class="form-group">
     <input type="text"
@@ -50,3 +72,113 @@
   <button (click) ="addProduct()">Button</button>
 </form>
 <button (click) = "showMessage()">Show</button> -->
+
+<!-- Button triggle
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  ADD
+</button> -->
+<!--Modal-->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+  <form #formAddProduct="ngForm" (submit)="onSubmit(formAddProduct)">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Tên sản phẩm</label>
+              <input type="text"
+                name="name"
+                [(ngModel)]="product.productName"
+                class="form-control"
+                placeholder="Product Name"
+                minlength="3"
+                required
+                #productName="ngModel"
+              >
+       
+          <div class="form-group">
+            <label for="">Giá sản phẩm</label>
+              <input
+                type="number"
+                name="priceSale"
+                [(ngModel)]="product.priceSale"
+                class="form-control"
+                placeholder="Price"
+                required
+                #priceRegular="ngModel"
+              >
+              <div class="alert alert-danger"
+                *ngIf="priceRegular.dirty && priceRegular.errors?.required">
+              Giá sản phẩm phải có dữ liệu
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Trạng thái</label>
+              <input
+                type="text"
+                name="status"
+                [(ngModel)]="product.status"
+                class="form-control"
+                placeholder="Price"
+                required
+                #priceRegular="ngModel"
+              >
+              <div class="alert alert-danger"
+                *ngIf="priceRegular.dirty && priceRegular.errors?.required">
+              Trạng thái phải là true hoặc false
+            </div>
+          </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div> -->
+<div class="col-md-3">
+  <h2 class="text-center">Add Product</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" formControlName="title" placeholder="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+      <div *ngIf="submitted && f.title.errors">
+        <div *ngIf="f.title.errors.required">Title is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <input type="text" formControlName="description" placeholder="Description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+      <div *ngIf="submitted && f.description.errors">
+        <div *ngIf="f.description.errors.required">Description is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Price ($):</label>
+      <input type="text" formControlName="price" placeholder="Price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+      <div *ngIf="submitted && f.price.errors">
+        <div *ngIf="f.price.errors.required">Price is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label>Company:</label>
+        <input type="text" formControlName="company" placeholder="Company" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }">
+        <div *ngIf="submitted && f.company.errors">
+          <div *ngIf="f.company.errors.required">Company is required</div>
+        </div>
+    </div>
+
+    <button type="submit"  class="btn btn-info">Save</button>
+  </form>
+</div>

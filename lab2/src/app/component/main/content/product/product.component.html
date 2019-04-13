@@ -1,24 +1,33 @@
 
 <div class="row">
-  <div class="col-md-3 col-sm-6 col-12" *ngFor="let product of products" [class.selected] = "product === selectedProduct" >
+  <div class="col-md-3 col-sm-6 col-12" *ngFor="let product of products" >
   <div class="card card-product mb-3" >
-    <img class="card-img-top" src='{{product.imagePath}}' alt="image" >
+    <img class="card-img-top img-fluid " src='{{product.imagePath}}' alt="image" >
     <div class="card-body ">
       <h5 class="card-title product-title">{{product.productName}}</h5>
+      <div class="rating">
+							<div class="stars">
+								<span class="fa fa-star fa-checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+            </div>
+      <div>
+        <p>Trạng thái: {{product.status ? 'Còn hàng':'Hết hàng'}}</p>
+      </div>
       <div class="cart-text ">
         <span class="del-price">{{product.priceSale}} </span>
         <span class="new-price">{{product.newPrice}}</span>
       </div>
       <a href="#" class="btn btn-info btn-add-to-cart"><i class="fas fa-shopping-cart"></i></a>
-      <a href="#" class="btn btn-outline-info btn-detail ml-2" (click)= "onSelect(product)" >Xem chi tiết</a>
-      <button class="btn-danger" (click) = "onDelete(product)">Xóa sản phẩm</button>
+      <a href="#" class="btn btn-outline-info btn-detail ml-2" routerLink='' >Xem chi tiết</a>
+      <button class="btn" (click)="deleteProduct(product.id)">Xoa</button>
       <h3 class="sale-sticky"> Sale</h3>
     </div>
   </div>
     </div>
 </div>
 <hr>
-<app-product-detail [infoProduct]='selectedProduct'>
-
-</app-product-detail>
-

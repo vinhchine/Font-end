@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from './product/list-product';
 
 @Component({
   selector: 'app-content',
@@ -8,7 +7,7 @@ import { PRODUCTS } from './product/list-product';
 })
 export class ContentComponent implements OnInit {
 
-  products = PRODUCTS;
+
   constructor() { }
 
   ngOnInit() {

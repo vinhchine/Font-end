@@ -1,40 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from './list-product';
 import { Product } from './product';
-import { ThongbaoService } from 'src/app/services/thongbao.service';
 import { ProductService } from 'src/app/services/product.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
   products: Product[ ] ;
-  selectedProduct: Product;
+  // selectedProduct: Product;
   // constructor(private thongbaoService: ThongbaoService) { }
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) { }
   ngOnInit() {
     this.getProducts();
   }
-  getProducts() {
-    this.products = this.productService.listProduct();
-  }
-  onSelect(item: Product) {
-    this.selectedProduct = item;
-  }
-  onDelete( product) {
-  this.products = this.products.filter(item => item.productID !== product.productID );
-  console.log(this.products);
+  // onSelect(item: Product) {
+  //   this.selectedProduct = item;
+  // }
+  deleteProduct(id) {
+    this.productService.deleteProduct(id).subscribe(data => {
+    this.products = this.products.filter(item => item.id !== data.id );
+  } );
   }
   // showMessage() {
   //   this.thongbaoService.message();
   // }
-  getListProduct() {
-    this.productService.getProducts()
-    .subscribe(data => this.products = data ) ;
+  getProducts() {
+    this.route.params.subscribe(param => {
+      const cateId = +param.cateId;
+      this.productService.listProduct(param.cateId).subscribe(data => {
+        console.log(data);
+        return this.products = data;
+      });
+    });
   }
-  showDetail(product) {
-    this.selectedProduct = product;
-    }
 }
